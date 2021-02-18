@@ -1,0 +1,13 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/projectSettingsUpdater.xml
+/contentModel.xml
+/.idea.Meatball-Madness.iml
+/modules.xml
+# Datasource local storage ignored files
+/../../../../../../../../../../../../../:\Users\EdenA\OneDrive\Documents\Shenkar\Unity\Unity Projects\Meatball Madness\Meatball-Madness\.idea\.idea.Meatball-Madness\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
