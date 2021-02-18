@@ -6,12 +6,12 @@ public class ControllPointLogic : MonoBehaviour
 {
     float xRotation = 0f;
     float yRotation = 0f;
-    [SerializeField]Rigidbody ball_Rb;
+    [SerializeField] private Rigidbody ball_Rb;
     [SerializeField] float rotationSpeed;
     [SerializeField] float shotPower = 30f;
     private void Awake()
-    {
-      //  ball_Rb = GetComponentInParent<Rigidbody>();
+    { 
+        //ball_Rb = GetComponentInParent<Rigidbody>();
     }
     private void Update()
     {
