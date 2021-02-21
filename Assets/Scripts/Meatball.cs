@@ -20,6 +20,7 @@ public class Meatball : MonoBehaviour
     private bool faceChanged;
     int randomFace;
     int currentFace;
+    bool isGrounded = true;
     private void Update()
     {
         transform.position = ballRb.position;
@@ -53,13 +54,21 @@ public class Meatball : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            faceChanged = false;
-            meshRenderer.material = faces[Random.Range(0, faces.Length)];
-            ballRb.velocity = transform.forward * lungeForce;
-            line.gameObject.SetActive(false);
+            if (isGrounded)
+            {
+                faceChanged = false;
+                meshRenderer.material = faces[Random.Range(0, faces.Length)];
+                ballRb.velocity = transform.forward * lungeForce;
+                line.gameObject.SetActive(false);
+                isGrounded = false;
+            }
         }
     }
 
-    
+    private void OnTriggerEnter(Collider other)
+    {
+        isGrounded = true;
+    }
+
 
 }
