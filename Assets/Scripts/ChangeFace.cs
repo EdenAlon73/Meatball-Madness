@@ -50,7 +50,6 @@ public class ChangeFace : MonoBehaviour
     if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonUp(0))
     {
       currentFaceID = RandomWithExclusion(0, 4);
-      
     }
   }
   
@@ -65,7 +64,6 @@ public class ChangeFace : MonoBehaviour
       excludeLastRandNum = result;
       firstRun = false;
       return result;
-      
     }
 
     //Not first run, exclude last random number with -1 on the max
