@@ -18,7 +18,8 @@ public class Meatball : MonoBehaviour
     [SerializeField] MeshRenderer meshRenderer;
     private int numOfFace = 0;
     private bool faceChanged;
-
+    int randomFace;
+    int currentFace;
     private void Update()
     {
         transform.position = ballRb.position;
@@ -59,21 +60,6 @@ public class Meatball : MonoBehaviour
         }
     }
 
-    private void ChangeMat()
-    {
-        
-       if (meshRenderer.material = face0)
-       {
-            meshRenderer.material = faces[Random.Range(1, faces.Length)];
-       }
-
-        if (meshRenderer.material = face1)
-        {
-            
-            meshRenderer.material = faces[Random.Range(0,validChoices)];
-       }
-
-
-    }
+    
 
 }
