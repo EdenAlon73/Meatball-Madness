@@ -1035,12 +1035,24 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: -0.000000059604645, y: 0.0000010728836, z: 0}
---- !u!23 &1162694778 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: b79b93e0312b8894a93863a4b47fb670,
-    type: 3}
-  m_PrefabInstance: {fileID: 473751322}
+--- !u!114 &1162694779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162694775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cf7e187bd4bec140bdf09664f1d4f19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentFaceID: 0
+  differentFaces:
+  - {fileID: 2100000, guid: 4fc5858a19690194980221b03d59d507, type: 2}
+  - {fileID: 2100000, guid: 05156a4db989f0847bbce88b3dac13d5, type: 2}
+  - {fileID: 2100000, guid: 8d73cc0188a8067419e542026fe5af62, type: 2}
+  - {fileID: 2100000, guid: e730ee880d87310439dfcd3466035ea0, type: 2}
 --- !u!4 &1162694780 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b79b93e0312b8894a93863a4b47fb670,
@@ -1736,16 +1748,6 @@ MonoBehaviour:
   rotationSpeed: 5
   lungeForce: 30
   line: {fileID: 537942144}
-  faces:
-  - {fileID: 2100000, guid: 4fc5858a19690194980221b03d59d507, type: 2}
-  - {fileID: 2100000, guid: 05156a4db989f0847bbce88b3dac13d5, type: 2}
-  - {fileID: 2100000, guid: 8d73cc0188a8067419e542026fe5af62, type: 2}
-  - {fileID: 2100000, guid: e730ee880d87310439dfcd3466035ea0, type: 2}
-  face0: {fileID: 0}
-  face1: {fileID: 0}
-  face2: {fileID: 0}
-  face3: {fileID: 0}
-  meshRenderer: {fileID: 1162694778}
 --- !u!4 &1690683492
 Transform:
   m_ObjectHideFlags: 0

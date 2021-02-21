@@ -9,8 +9,9 @@ public class ChangeFace : MonoBehaviour
 {
   private MeshRenderer meshRenderer;
   [SerializeField] private int currentFaceID;
-  [SerializeField] private int randomFaceID;
   [SerializeField] private Material[] differentFaces;
+  int excludeLastRandNum;
+  bool firstRun = true;
 
   private void Awake()
   {
@@ -46,12 +47,32 @@ public class ChangeFace : MonoBehaviour
 
   private void CalculateNewFace()
   {
-    if (Input.GetMouseButton(0))
+    if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonUp(0))
     {
-      randomFaceID = Random.Range(0, 3);
-      currentFaceID = randomFaceID;
+      currentFaceID = RandomWithExclusion(0, 4);
+      
     }
-    
-    
+  }
+  
+  int RandomWithExclusion(int min, int max)
+  {
+    int result;
+    //Don't exclude if this is first run.
+    if (firstRun)
+    {
+      //Generate normal random number
+      result = UnityEngine.Random.Range(min, max);
+      excludeLastRandNum = result;
+      firstRun = false;
+      return result;
+      
+    }
+
+    //Not first run, exclude last random number with -1 on the max
+    result = UnityEngine.Random.Range(min, max - 1);
+    //Apply +1 to the result to cancel out that -1 depending on the if statement
+    result = (result < excludeLastRandNum) ? result : result + 1;
+    excludeLastRandNum = result;
+    return result;
   }
 }
