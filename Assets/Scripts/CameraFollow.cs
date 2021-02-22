@@ -24,7 +24,7 @@ public class CameraFollow : MonoBehaviour
 
     private void LateUpdate()
     {
-        CamSeeThrough();
+      //  CamSeeThrough();
     }
 
     private void CamSeeThrough()

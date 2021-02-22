@@ -18015,6 +18015,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 7502321546928899355}
   speed: 15
+  obstruction: {fileID: 0}
 --- !u!1 &1639046666
 GameObject:
   m_ObjectHideFlags: 0
@@ -28435,6 +28436,7 @@ MonoBehaviour:
   lungeForce: 30
   line: {fileID: 1866535616}
   collider: {fileID: 151261022}
+  stain: {fileID: 3171404155590629182, guid: 10cf25e1ced4f6c40becc14837722ba1, type: 3}
 --- !u!4 &7502321546836212564
 Transform:
   m_ObjectHideFlags: 0
