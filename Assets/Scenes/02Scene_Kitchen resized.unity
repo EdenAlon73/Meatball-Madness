@@ -1523,10 +1523,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Meatball Ball Correct Origin
       objectReference: {fileID: 0}
-    - target: {fileID: 6719155406761762, guid: e001ad345b9a7df498d79e1058da5471, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 818546437335135640, guid: e001ad345b9a7df498d79e1058da5471,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1585,17 +1581,17 @@ PrefabInstance:
     - target: {fileID: 818546437335135640, guid: e001ad345b9a7df498d79e1058da5471,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.40028
+      value: 0.084618
       objectReference: {fileID: 0}
     - target: {fileID: 818546437335135640, guid: e001ad345b9a7df498d79e1058da5471,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.40028
+      value: 0.084618
       objectReference: {fileID: 0}
     - target: {fileID: 818546437335135640, guid: e001ad345b9a7df498d79e1058da5471,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.40028
+      value: 0.084618
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e001ad345b9a7df498d79e1058da5471, type: 3}
