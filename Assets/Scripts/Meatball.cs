@@ -43,6 +43,16 @@ public class Meatball : MonoBehaviour
             xRot = 20;
         }
 
+        if(yRot > 12)
+        {
+            yRot = 12;
+        }
+
+        if(yRot < -12)
+        {
+            yRot = -12;
+        }
+
         if (Input.GetMouseButton(0))
         {
             pressedTime += Time.deltaTime;
