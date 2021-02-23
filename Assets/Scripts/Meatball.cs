@@ -17,7 +17,7 @@ public class Meatball : MonoBehaviour
     [SerializeField] float pressedTime;
     [SerializeField] float cooldownTime;
     [SerializeField] float lineAnimeDuraition = 5f;
-    [SerializeField] Color lineFullColor;
+    bool constraintsOn = false;
     private void Start()
     {
         distToGround = collider.bounds.extents.y;
@@ -25,7 +25,7 @@ public class Meatball : MonoBehaviour
     }
     private void Update()
     {
-        
+        print("constraintsOn"+constraintsOn);   
         transform.position = ballRb.position;
 
         if(!didDrawStain && isgrounded())
@@ -46,7 +46,11 @@ public class Meatball : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             pressedTime += Time.deltaTime;
-            ballRb.constraints = RigidbodyConstraints.FreezePosition;
+            if (!constraintsOn)
+            {
+                ballRb.constraints = RigidbodyConstraints.FreezePosition;
+                constraintsOn = true;
+            }
             // xRot += Input.GetAxis("Mouse Y") * rotationSpeed;
             yRot += Input.GetAxis("Mouse X") * rotationSpeed;
             transform.rotation = Quaternion.Euler(xRot, yRot, 0f);
@@ -54,11 +58,12 @@ public class Meatball : MonoBehaviour
 
             
             StartCoroutine(DrawLine());
-            line.material.color = Color.Lerp(line.material.color, lineFullColor, 0.5f);
+            
         }
         
         if (Input.GetMouseButtonUp(0) )
         {
+            constraintsOn = false;
             line.gameObject.SetActive(false);
             if (pressedTime >= cooldownTime)
             {
@@ -70,6 +75,7 @@ public class Meatball : MonoBehaviour
             else
             {
                 print("time is a bitch");
+                ballRb.constraints = RigidbodyConstraints.None;
                 pressedTime = 0;
             }
         }
@@ -108,5 +114,12 @@ public class Meatball : MonoBehaviour
             line.SetPosition(1, pos);
             yield return null;
         }
+    }
+
+
+
+    public void ConstraintsOff()
+    {
+        ballRb.constraints = RigidbodyConstraints.None;
     }
 }
