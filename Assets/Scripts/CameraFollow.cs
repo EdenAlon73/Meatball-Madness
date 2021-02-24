@@ -7,6 +7,12 @@ public class CameraFollow : MonoBehaviour
 {
     [SerializeField] private Transform target;
     [SerializeField] private float speed = 15f;
+    [SerializeField] private float SpeedForPress = 30;
+    [SerializeField] private Transform target2ndPoint;
+    Transform targetOgPoint;
+    private float ogSpeed;
+    
+    
 
     public Transform obstruction;
     private float zoomSpeed = 2f;
@@ -14,14 +20,30 @@ public class CameraFollow : MonoBehaviour
     private void Start()
     {
         obstruction = target;
+        targetOgPoint = target;
+        ogSpeed = speed;
     }
 
     private void FixedUpdate()
     {
         transform.position = Vector3.Lerp(transform.position, target.position, speed * Time.deltaTime);
         transform.rotation = Quaternion.Lerp(transform.rotation, target.rotation, speed * Time.deltaTime);
+        CameraPressControll();
     }
 
+    private void CameraPressControll()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            target = target2ndPoint;
+            speed = SpeedForPress;
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            target = targetOgPoint;
+            speed = ogSpeed;
+        }
+    }
     private void LateUpdate()
     {
       //  CamSeeThrough();

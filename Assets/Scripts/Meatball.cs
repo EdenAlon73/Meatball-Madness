@@ -18,6 +18,10 @@ public class Meatball : MonoBehaviour
     [SerializeField] float cooldownTime;
     [SerializeField] float lineAnimeDuraition = 5f;
     bool constraintsOn = false;
+    public bool inCannon = false;
+    bool finishedPrep = false;
+    [SerializeField]private Transform ballPointCannon;
+    [SerializeField] GameObject meatBallSelf;
     private void Start()
     {
         distToGround = collider.bounds.extents.y;
@@ -25,82 +29,89 @@ public class Meatball : MonoBehaviour
     }
     private void Update()
     {
-        print("constraintsOn"+constraintsOn);   
+
         transform.position = ballRb.position;
-
-        if(!didDrawStain && isgrounded())
+        if (!inCannon)
         {
-            //Instantiate(stain, stainPos, Quaternion.identity);
-        }
-
-        if (xRot < -18)
-        {
-            xRot = -18;
-        }
-
-        if (xRot > 20)
-        {
-            xRot = 20;
-        }
-
-        if(yRot > 12)
-        {
-            yRot = 12;
-        }
-
-        if(yRot < -12)
-        {
-            yRot = -12;
-        }
-
-        if (Input.GetMouseButton(0))
-        {
-            pressedTime += Time.deltaTime;
-            if (!constraintsOn)
+            if (!didDrawStain && isgrounded())
             {
-                ballRb.constraints = RigidbodyConstraints.FreezePosition;
-                constraintsOn = true;
+                //Instantiate(stain, stainPos, Quaternion.identity);
             }
-            // xRot += Input.GetAxis("Mouse Y") * rotationSpeed;
-            yRot += Input.GetAxis("Mouse X") * rotationSpeed;
-            transform.rotation = Quaternion.Euler(xRot, yRot, 0f);
-            line.gameObject.SetActive(true);
 
-            
-            StartCoroutine(DrawLine());
-            
-        }
-        
-        if (Input.GetMouseButtonUp(0) )
-        {
-            constraintsOn = false;
-            line.gameObject.SetActive(false);
-            if (pressedTime >= cooldownTime)
+            if (xRot < -18)
             {
-                ballRb.constraints = RigidbodyConstraints.None;
-                ballRb.velocity = transform.forward * lungeForce;
+                xRot = -18;
+            }
+
+            if (xRot > 20)
+            {
+                xRot = 20;
+            }
+
+            if (yRot > 12)
+            {
+                yRot = 12;
+            }
+
+            if (yRot < -12)
+            {
+                yRot = -12;
+            }
+
+            if (Input.GetMouseButton(0))
+            {
+                pressedTime += Time.deltaTime;
+                if (!constraintsOn)
+                {
+                    ballRb.constraints = RigidbodyConstraints.FreezePosition;
+                    constraintsOn = true;
+                }
+                // xRot += Input.GetAxis("Mouse Y") * rotationSpeed;
+                yRot += Input.GetAxis("Mouse X") * rotationSpeed;
+                transform.rotation = Quaternion.Euler(xRot, yRot, 0f);
+                line.gameObject.SetActive(true);
+
+
+                StartCoroutine(DrawLine());
+
+            }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                constraintsOn = false;
+                line.gameObject.SetActive(false);
+                if (pressedTime >= cooldownTime)
+                {
+                    ballRb.constraints = RigidbodyConstraints.None;
+                    ballRb.velocity = transform.forward * lungeForce;
+
+                    pressedTime = 0;
+                }
+                else
+                {
+                    print("time is a bitch");
+                    ballRb.constraints = RigidbodyConstraints.None;
+                    pressedTime = 0;
+                }
+            }
+        }
+        else
+        {
+            if (!finishedPrep)
+            {
                 
-                pressedTime = 0;
+                //finishedPrep = true;
+                meatBallSelf.transform.position = Vector3.MoveTowards(meatBallSelf.transform.position, ballPointCannon.position, 15);
+                ballRb.velocity = Vector3.zero;
             }
-            else
+            if (Input.GetMouseButtonUp(0))
             {
-                print("time is a bitch");
                 ballRb.constraints = RigidbodyConstraints.None;
-                pressedTime = 0;
             }
         }
-        
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        print("Touch");
-        if (other.gameObject.CompareTag("Ground"))
-        {
-            print("");
-            //isGrounded = true;
-        }
-    }
+
 
     private bool isgrounded()
     {
