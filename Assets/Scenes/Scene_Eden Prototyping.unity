@@ -5616,7 +5616,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 60.9, y: -103.9}
+  m_AnchoredPosition: {x: 33.7, y: -103.9}
   m_SizeDelta: {x: 29, y: 27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!61 &584427977
@@ -15922,13 +15922,13 @@ MonoBehaviour:
   ballRb: {fileID: 1162694776}
   rotationSpeed: 5
   lungeForce: 70
-  line: {fileID: 537942144}
-  collider: {fileID: 1162694777}
-  stain: {fileID: 0}
+  inCannon: 0
   pressedTime: 0
   cooldownTime: 0.1
+  line: {fileID: 537942144}
   lineAnimeDuraition: 0.1
-  inCannon: 0
+  collider: {fileID: 1162694777}
+  stain: {fileID: 0}
   ballPointCannon: {fileID: 0}
   meatBallSelf: {fileID: 0}
 --- !u!4 &1690683492
@@ -17612,6 +17612,7 @@ GameObject:
   - component: {fileID: 1903990363}
   - component: {fileID: 1903990362}
   - component: {fileID: 1903990361}
+  - component: {fileID: 1903990364}
   m_Layer: 5
   m_Name: Meter
   m_TagString: Untagged
@@ -17705,6 +17706,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1903990359}
   m_CullTransparentMesh: 0
+--- !u!114 &1903990364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1903990359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6ab76914415b3647b8e66b09b02a004, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrow: {fileID: 584427978}
+  arrowAlphValue: 0
 --- !u!1 &1914400961
 GameObject:
   m_ObjectHideFlags: 0
