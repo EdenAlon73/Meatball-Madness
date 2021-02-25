@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
-public class Meatball : MonoBehaviour
+public class ControlPoint : MonoBehaviour
 {
-    // Movement
+     // Movement
     private float xRot, yRot = 0f;
     public Rigidbody ballRb;
     public float rotationSpeed = 5f;

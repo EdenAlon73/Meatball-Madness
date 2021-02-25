@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6746404053892249805}
-  - component: {fileID: 6746404053892249802}
+  - component: {fileID: 6768961836450583027}
   m_Layer: 0
   m_Name: Control Point
   m_TagString: Untagged
@@ -63,7 +63,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6746404053892249802
+--- !u!114 &6768961836450583027
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -72,19 +72,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 6746404053892249803}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e220f5547e83b440ae623682ed82887, type: 3}
+  m_Script: {fileID: 11500000, guid: 196543511a8a0a84598973e766ae1cb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ballRb: {fileID: 0}
   rotationSpeed: 5
   lungeForce: 70
-  line: {fileID: 0}
-  collider: {fileID: 0}
-  stain: {fileID: 0}
+  inCannon: 0
   pressedTime: 0
   cooldownTime: 0.1
+  line: {fileID: 0}
   lineAnimeDuraition: 0.1
-  inCannon: 0
+  collider: {fileID: 0}
+  stain: {fileID: 0}
   ballPointCannon: {fileID: 0}
   meatBallSelf: {fileID: 0}
 --- !u!1 &6746404053919073923
