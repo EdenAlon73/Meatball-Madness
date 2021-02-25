@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpringLogic : MonoBehaviour
 {
-    [SerializeField]float springPower = 100f;
+    [SerializeField]float springPower = 1;
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
