@@ -9,6 +9,7 @@ TagManager:
   - Movables
   - Fluid
   - Cannon
+  - Particle_HyperSpeed
   layers:
   - Default
   - TransparentFX

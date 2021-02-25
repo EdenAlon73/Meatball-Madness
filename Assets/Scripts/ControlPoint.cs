@@ -21,11 +21,16 @@ public class ControlPoint : MonoBehaviour
     private bool didDrawStain = false;
     [SerializeField] private float lineAnimeDuraition = 5f;
     
+    // HyperSpeed Particles
+    private GameObject particleHyperSpeed;
+    private bool hyperSpeedParticlesActive = false;
+
     //Cache Ref
     [SerializeField] private Collider collider;
     [SerializeField] private GameObject stain;
     [SerializeField] private Transform ballPointCannon;
     [SerializeField] private GameObject meatBallSelf;
+    
    
    
     
@@ -38,6 +43,8 @@ public class ControlPoint : MonoBehaviour
     private void Start()
     {
         distToGround = collider.bounds.extents.y;
+        particleHyperSpeed = GameObject.FindWithTag("Particle_HyperSpeed");
+        particleHyperSpeed.SetActive(false);
 
     }
     private void Update()
@@ -73,6 +80,7 @@ public class ControlPoint : MonoBehaviour
 
             if (Input.GetMouseButton(0))
             {
+                
                 pressedTime += Time.deltaTime;
                 if (!constraintsOn)
                 {
@@ -93,6 +101,8 @@ public class ControlPoint : MonoBehaviour
             {
                 constraintsOn = false;
                 line.gameObject.SetActive(false);
+                particleHyperSpeed.SetActive(true);
+                hyperSpeedParticlesActive = true;
                 if (pressedTime >= cooldownTime)
                 {
                     ballRb.constraints = RigidbodyConstraints.None;
@@ -121,6 +131,11 @@ public class ControlPoint : MonoBehaviour
             {
                 ballRb.constraints = RigidbodyConstraints.None;
             }
+        }
+
+        if (hyperSpeedParticlesActive)
+        {
+            Invoke("DisableHyperSpeedParticle", 1.5f);
         }
     }
 
@@ -155,5 +170,11 @@ public class ControlPoint : MonoBehaviour
     public void ConstraintsOff()
     {
         ballRb.constraints = RigidbodyConstraints.None;
+    }
+
+    private void DisableHyperSpeedParticle()
+    {
+        particleHyperSpeed.SetActive(false);
+        hyperSpeedParticlesActive = false;
     }
 }
