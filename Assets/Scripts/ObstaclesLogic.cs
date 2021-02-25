@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class ObstaclesLogic : MonoBehaviour
 {
-    private Meatball meatball;
+    private ControlPoint controlPoint;
     private void Awake()
     {
-        meatball = FindObjectOfType<Meatball>();
+        controlPoint = FindObjectOfType<ControlPoint>();
     }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            meatball.ConstraintsOff();
+            controlPoint.ConstraintsOff();
         }
     }
 }
