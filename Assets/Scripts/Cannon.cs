@@ -4,26 +4,22 @@ using UnityEngine;
 
 public class Cannon : MonoBehaviour
 {
-    Transform ballSpawnPoint;
-    Animator anim;
-    [SerializeField]Meatball meatball;
+    private Transform ballSpawnPoint;
+    private Animator animator;
+    [SerializeField] private Meatball meatballControlPoint;
 
     private void Awake()
     {
-        anim = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-
-            meatball.inCannon = true;
-            Invoke("StartCannon", 1f);
+            animator.SetBool("IsClosing", true);
+            meatballControlPoint.inCannon = true;
+            
         }
     }
-
-    private void StartCannon()
-    {
-        anim.SetBool("BallEnterd", true);
-    } 
+    
 }

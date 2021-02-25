@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - Obstacle
   - Movables
+  - Fluid
+  - Cannon
   layers:
   - Default
   - TransparentFX
