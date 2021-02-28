@@ -102,8 +102,6 @@ public class ControlPoint : MonoBehaviour
             {
                 constraintsOn = false;
                 line.gameObject.SetActive(false);
-                particleHyperSpeed.SetActive(true);
-                hyperSpeedParticlesActive = true;
                 if (pressedTime >= cooldownTime)
                 {
                     ballRb.constraints = RigidbodyConstraints.None;
@@ -134,14 +132,26 @@ public class ControlPoint : MonoBehaviour
             }
         }
 
+       /*
         if (hyperSpeedParticlesActive)
         {
             Invoke("DisableHyperSpeedParticle", 1.5f);
         }
+        */
 
         if (moveControllPoint)
         {
             transform.position = cannonMeatBall.transform.position;
+        }
+
+        if (ballRb.velocity.z >= 20f)
+        {
+            hyperSpeedParticlesActive = true;
+            particleHyperSpeed.SetActive(true);
+        }
+        else
+        {
+            DisableHyperSpeedParticle();
         }
     }
 
