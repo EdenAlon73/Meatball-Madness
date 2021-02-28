@@ -5,12 +5,14 @@ using UnityEngine;
 public class MeatBallScore : MonoBehaviour
 {
     GameManager gameManager;
-    [SerializeField ]Transform scoreSpwanPoint;
-    [SerializeField] GameObject scoreTxt;
-    [SerializeField] Canvas canvas;
+    [SerializeField]private Transform scoreSpwanPoint;
+    [SerializeField]private GameObject scoreTxt;
+    [SerializeField]private Canvas canvas;
+    private Animator anim;
     private void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
+        anim = GetComponent<Animator>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -22,5 +24,4 @@ public class MeatBallScore : MonoBehaviour
             Instantiate(scoreTxt, scoreSpwanPoint.position, Quaternion.identity ,canvas.transform);
         }
     }
-
 }

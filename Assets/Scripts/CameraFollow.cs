@@ -6,12 +6,14 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     [SerializeField] private Transform target;
-    [SerializeField] private float speed = 15f;
+    public float speed = 15f;
     [SerializeField] private float SpeedForPress = 30;
     [SerializeField] private Transform target2ndPoint;
+    [SerializeField] private Transform secondMeatBall;
+    [SerializeField] private Transform posForCannon;
     Transform targetOgPoint;
     private float ogSpeed;
-    
+    public bool atCannon = false;
     
 
     public Transform obstruction;
@@ -26,9 +28,18 @@ public class CameraFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.position = Vector3.Lerp(transform.position, target.position, speed * Time.deltaTime);
-        transform.rotation = Quaternion.Lerp(transform.rotation, target.rotation, speed * Time.deltaTime);
-        CameraPressControll();
+        if (!atCannon)
+        {
+            transform.position = Vector3.Lerp(transform.position, target.position, speed * Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, target.rotation, speed * Time.deltaTime);
+            CameraPressControll();
+        }
+        else
+        {
+            transform.position = Vector3.Lerp(transform.position, posForCannon.position, speed * Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, posForCannon.rotation, speed * Time.deltaTime);
+        }
+      
     }
 
     private void CameraPressControll()
