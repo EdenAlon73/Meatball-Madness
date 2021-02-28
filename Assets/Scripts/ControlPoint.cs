@@ -30,10 +30,10 @@ public class ControlPoint : MonoBehaviour
     [SerializeField] private GameObject stain;
     [SerializeField] private Transform ballPointCannon;
     [SerializeField] private GameObject meatBallSelf;
-    
-   
-   
-    
+    [SerializeField] private GameObject cannonMeatBall;
+
+
+    public bool moveControllPoint = false;
     private bool finishedPrep = false;
     
     /// <summary>
@@ -50,9 +50,10 @@ public class ControlPoint : MonoBehaviour
     private void Update()
     {
 
-        transform.position = ballRb.position;
+        
         if (!inCannon)
         {
+            transform.position = ballRb.position;
             if (!didDrawStain && isgrounded())
             {
                 //Instantiate(stain, stainPos, Quaternion.identity);
@@ -68,14 +69,14 @@ public class ControlPoint : MonoBehaviour
                 xRot = 20;
             }
 
-            if (yRot > 12)
+            if (yRot > 20)
             {
-                yRot = 12;
+                yRot = 20;
             }
 
-            if (yRot < -12)
+            if (yRot < -20)
             {
-                yRot = -12;
+                yRot = -20;
             }
 
             if (Input.GetMouseButton(0))
@@ -137,6 +138,11 @@ public class ControlPoint : MonoBehaviour
         {
             Invoke("DisableHyperSpeedParticle", 1.5f);
         }
+
+        if (moveControllPoint)
+        {
+            transform.position = cannonMeatBall.transform.position;
+        }
     }
 
 
@@ -177,4 +183,5 @@ public class ControlPoint : MonoBehaviour
         particleHyperSpeed.SetActive(false);
         hyperSpeedParticlesActive = false;
     }
+ 
 }
