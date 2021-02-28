@@ -6,6 +6,7 @@ public class MeatBallCreated : MonoBehaviour
 {
     private ControlPoint controlPoint;
     private CameraFollow cameraFollow;
+    [SerializeField] private GameObject confetti;
     private void Awake()
     {
         controlPoint = FindObjectOfType<ControlPoint>();
@@ -16,5 +17,10 @@ public class MeatBallCreated : MonoBehaviour
         controlPoint.moveControllPoint = true;
         cameraFollow.speed = 2f;
         cameraFollow.atCannon = false;
+    }
+
+    public void ConfettiOn()
+    {
+        confetti.SetActive(true);
     }
 }
