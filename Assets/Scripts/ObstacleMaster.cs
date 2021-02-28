@@ -4,18 +4,27 @@ using UnityEngine;
 
 public class ObstacleMaster : MonoBehaviour
 {
-    [SerializeField] private bool doIrotate = false;
-    [SerializeField] private bool doImoveHorizontally = false;
-    [SerializeField] private bool doImoveVertically = false;
+    [Header("Rotation Config")]
+    [SerializeField] private bool doIRotate = false;
+    [SerializeField] private bool doIRotateLeft = false;
     [SerializeField] private float rotateSpeed = 15f;
-    [SerializeField] private bool doIrotateLeft = false;
-    [SerializeField] private float moveSpeed = 20f;
-    private bool dirRight = true;
-    [SerializeField] private float horizDist = 5f;
+    
+    [Header("Horizontal Movement Config")]
+    [SerializeField] private bool doIMoveHorizontally = false;
+    [SerializeField] private float horizDistance = 5f;
+    [SerializeField] private float horizMoveSpeed = 20f;
+    
+    [Header("Vertical Movement Config")]
+    [SerializeField] private bool doIMoveVertically = false;
+    [SerializeField] private float verticalDistance = 5f;
+    [SerializeField] private float verticalMoveSpeed = 20f;
+    
+    // Internal Bools & Floats
     private float posXog;
     private float posYog;
+    private bool dirRight = true;
     private bool dirUp = true;
-    private float verticalDist = 5f;
+    
     private void Start()
     {
         posXog = transform.position.x;
@@ -23,17 +32,17 @@ public class ObstacleMaster : MonoBehaviour
     }
     private void Update()
     {
-        if (doIrotate)
+        if (doIRotate)
         {
             Rotate();
         }
 
-        if (doImoveHorizontally)
+        if (doIMoveHorizontally)
         {
             MoveHorizontally();
         }
 
-        if (doImoveVertically)
+        if (doIMoveVertically)
         {
             MoveVertically();
         }
@@ -41,7 +50,7 @@ public class ObstacleMaster : MonoBehaviour
 
     private void Rotate()
     {
-        if (!doIrotateLeft)
+        if (!doIRotateLeft)
         {
             transform.Rotate(Vector3.up * (rotateSpeed * Time.deltaTime));
         }
@@ -55,18 +64,18 @@ public class ObstacleMaster : MonoBehaviour
     {
         if (dirRight)
         {
-            transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+            transform.Translate(Vector2.right * (horizMoveSpeed * Time.deltaTime));
         }
         else
         {
-            transform.Translate(-Vector2.right * moveSpeed * Time.deltaTime);
+            transform.Translate(-Vector2.right * (horizMoveSpeed * Time.deltaTime));
         }
 
-        if(transform.position.x >= posXog + horizDist)
+        if(transform.position.x >= posXog + horizDistance)
         {
             dirRight = false;
         }
-        if(transform.position.x <= posXog - horizDist)
+        if(transform.position.x <= posXog - horizDistance)
         {
             dirRight = true; 
         }
@@ -77,18 +86,18 @@ public class ObstacleMaster : MonoBehaviour
     {
         if (dirUp)
         {
-            transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
+            transform.Translate(Vector2.up * (verticalMoveSpeed * Time.deltaTime));
         }
         else
         {
-            transform.Translate(-Vector2.up * moveSpeed * Time.deltaTime);
+            transform.Translate(-Vector2.up * (verticalMoveSpeed * Time.deltaTime));
         }
 
-        if (transform.position.y >= posYog + verticalDist)
+        if (transform.position.y >= posYog + verticalDistance)
         {
             dirUp = false;
         }
-        if (transform.position.y <= posYog - verticalDist)
+        if (transform.position.y <= posYog - verticalDistance)
         {
             dirUp = true;
         }
