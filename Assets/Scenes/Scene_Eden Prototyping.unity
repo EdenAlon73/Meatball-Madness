@@ -27273,6 +27273,7 @@ GameObject:
   - component: {fileID: 5580166026885121585}
   - component: {fileID: 8853902023490259348}
   - component: {fileID: 6718130064479698270}
+  - component: {fileID: 5060757092189641868}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Untagged
@@ -27280,6 +27281,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5060757092189641868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5060757092189641867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 578ebf75bfcc2e944bf4af65fa5019c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doIrotate: 0
+  doImoveHorizontally: 0
+  doImoveVertically: 0
+  rotateSpeed: 100
+  doIrotateLeft: 0
+  moveSpeed: 20
+  horizDist: 5
 --- !u!4 &5284093477915739509 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7978008635432320681, guid: 18cb90140b3151e47b4b87f23cac1ff0,
