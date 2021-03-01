@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Scene_Walls are kitchen props.unity
+    guid: 79c785bc9c1be3b43b18d86bf0ac4536
   m_configObjects: {}
