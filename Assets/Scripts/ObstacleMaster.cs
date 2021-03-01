@@ -11,6 +11,7 @@ public class ObstacleMaster : MonoBehaviour
     
     [Header("Horizontal Movement Config")]
     [SerializeField] private bool doIMoveHorizontally = false;
+    [SerializeField] private bool doIMoveLeft;
     [SerializeField] private float horizDistance = 5f;
     [SerializeField] private float horizMoveSpeed = 20f;
     
@@ -18,12 +19,18 @@ public class ObstacleMaster : MonoBehaviour
     [SerializeField] private bool doIMoveVertically = false;
     [SerializeField] private float verticalDistance = 5f;
     [SerializeField] private float verticalMoveSpeed = 20f;
+
+    [SerializeField] private float waitTimeToStart;
+    
     
     // Internal Bools & Floats
     private float posXog;
     private float posYog;
-    private bool dirRight = true;
-    private bool dirUp = true;
+    private bool directionRight = true;
+    private bool directionLeft;
+    private bool directionUp = true;
+    private bool waitTimeOver;
+    private float timePassed;
     
     private void Start()
     {
@@ -32,20 +39,27 @@ public class ObstacleMaster : MonoBehaviour
     }
     private void Update()
     {
-        if (doIRotate)
+        
+        CalculateTimePassed();
+        
+        if (waitTimeOver)
         {
-            Rotate();
-        }
+            if (doIRotate)
+            {
+                Rotate();
+            }
 
-        if (doIMoveHorizontally)
-        {
-            MoveHorizontally();
-        }
+            if (doIMoveHorizontally)
+            {
+                MoveHorizontally();
+            }
 
-        if (doIMoveVertically)
-        {
-            MoveVertically();
+            if (doIMoveVertically)
+            {
+                MoveVertically();
+            }
         }
+       
     }
 
     private void Rotate()
@@ -62,29 +76,52 @@ public class ObstacleMaster : MonoBehaviour
 
     private void MoveHorizontally()
     {
-        if (dirRight)
+        if (!doIMoveLeft)
         {
-            transform.Translate(Vector2.right * (horizMoveSpeed * Time.deltaTime));
+            if (directionRight)
+            {
+                transform.Translate(Vector2.right * (horizMoveSpeed * Time.deltaTime));
+            }
+            else
+            {
+                transform.Translate(-Vector2.right * (horizMoveSpeed * Time.deltaTime));
+            }
+
+            if(transform.position.x >= posXog + horizDistance)
+            {
+                directionRight = false;
+            }
+            if(transform.position.x <= posXog)
+            {
+                directionRight = true; 
+            }
         }
         else
         {
-            transform.Translate(-Vector2.right * (horizMoveSpeed * Time.deltaTime));
-        }
+            if (directionLeft)
+            {
+                transform.Translate(-Vector2.right * (horizMoveSpeed * Time.deltaTime));
+            }
+            else
+            {
+                transform.Translate(Vector2.right * (horizMoveSpeed * Time.deltaTime));
+            }
 
-        if(transform.position.x >= posXog + horizDistance)
-        {
-            dirRight = false;
+            if(transform.position.x <= posXog - horizDistance)
+            {
+                directionLeft = false;
+            }
+            if(transform.position.x >= posXog)
+            {
+                directionLeft = true; 
+            }
         }
-        if(transform.position.x <= posXog - horizDistance)
-        {
-            dirRight = true; 
-        }
-
+        
     }
 
     private void MoveVertically()
     {
-        if (dirUp)
+        if (directionUp)
         {
             transform.Translate(Vector2.up * (verticalMoveSpeed * Time.deltaTime));
         }
@@ -95,11 +132,24 @@ public class ObstacleMaster : MonoBehaviour
 
         if (transform.position.y >= posYog + verticalDistance)
         {
-            dirUp = false;
+            directionUp = false;
         }
-        if (transform.position.y <= posYog - verticalDistance)
+        if (transform.position.y <= posYog)
         {
-            dirUp = true;
+            directionUp = true;
+        }
+    }
+
+    private void CalculateTimePassed()
+    {
+        timePassed += Time.deltaTime;
+        if (timePassed >= waitTimeToStart)
+        {
+            waitTimeOver = true;
+        }
+        else
+        {
+            waitTimeOver = false;
         }
     }
 }
