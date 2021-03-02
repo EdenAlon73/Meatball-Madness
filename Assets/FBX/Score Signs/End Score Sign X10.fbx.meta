@@ -3,7 +3,17 @@ guid: 7cc7608dd867dad4fabc363397a71fb6
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: End Surface Green
+    second: {fileID: 2100000, guid: 52ba64f93d7ee384eb1efa21fbab4a97, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Numbers Black
+    second: {fileID: 2100000, guid: b2788c05e9ab24f47a12ec9081158cae, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
