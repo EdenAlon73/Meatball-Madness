@@ -15,7 +15,9 @@ public class ControlPoint : MonoBehaviour
     public bool inCannon = false;
     [SerializeField] private float pressedTime;
     [SerializeField] private float cooldownTime;
+    private RigidbodyConstraints ogRbConstraints;
     
+
     //Line
     public LineRenderer line;
     private bool didDrawStain = false;
@@ -46,12 +48,10 @@ public class ControlPoint : MonoBehaviour
         distToGround = collider.bounds.extents.y;
         particleHyperSpeed = GameObject.FindWithTag("Particle_HyperSpeed");
         particleHyperSpeed.SetActive(false);
-
+        ogRbConstraints = ballRb.constraints;
     }
     private void Update()
     {
-        TrailOn();
-
         if (!inCannon)
         {
             transform.position = ballRb.position;
@@ -105,15 +105,14 @@ public class ControlPoint : MonoBehaviour
                 line.gameObject.SetActive(false);
                 if (pressedTime >= cooldownTime)
                 {
-                    ballRb.constraints = RigidbodyConstraints.None;
+                    BackToOgConstraints();
                     ballRb.velocity = transform.forward * lungeForce;
 
                     pressedTime = 0;
                 }
                 else
                 {
-                    print("time is a bitch");
-                    ballRb.constraints = RigidbodyConstraints.None;
+                    BackToOgConstraints();
                     pressedTime = 0;
                 }
             }
@@ -129,17 +128,10 @@ public class ControlPoint : MonoBehaviour
             }
             if (Input.GetMouseButtonUp(0))
             {
-                ballRb.constraints = RigidbodyConstraints.None;
+                BackToOgConstraints();
             }
         }
-
-       /*
-        if (hyperSpeedParticlesActive)
-        {
-            Invoke("DisableHyperSpeedParticle", 1.5f);
-        }
-        */
-
+        
         if (moveControllPoint)
         {
             transform.position = cannonMeatBall.transform.position;
@@ -185,9 +177,9 @@ public class ControlPoint : MonoBehaviour
 
 
 
-    public void ConstraintsOff()
+    public void BackToOgConstraints()
     {
-        ballRb.constraints = RigidbodyConstraints.None;
+        ballRb.constraints = ogRbConstraints;
     }
 
     private void DisableHyperSpeedParticle()

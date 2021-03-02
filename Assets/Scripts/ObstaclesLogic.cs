@@ -13,7 +13,7 @@ public class ObstaclesLogic : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            controlPoint.ConstraintsOff();
+            controlPoint.BackToOgConstraints();
         }
     }
 }
