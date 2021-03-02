@@ -31,7 +31,7 @@ public class ControlPoint : MonoBehaviour
     [SerializeField] private Transform ballPointCannon;
     [SerializeField] private GameObject meatBallSelf;
     [SerializeField] private GameObject cannonMeatBall;
-    [SerializeField] private TrailRenderer trail;
+    
 
 
     public bool moveControllPoint = false;
@@ -143,6 +143,7 @@ public class ControlPoint : MonoBehaviour
         if (moveControllPoint)
         {
             transform.position = cannonMeatBall.transform.position;
+           
         }
 
         if (ballRb.velocity.z >= 20f)
@@ -195,16 +196,5 @@ public class ControlPoint : MonoBehaviour
         hyperSpeedParticlesActive = false;
     }
  
-    private void TrailOn()
-    {
-        if (isgrounded())
-        {
-            trail.emitting = true;
-        }
-
-        if (!isgrounded())
-        {
-            trail.emitting = false;
-        }
-    }
+    
 }
