@@ -9,7 +9,6 @@ public class SpringLogic : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            print(gameObject.tag);
             collision.gameObject.GetComponent<Rigidbody>().velocity = transform.up * springPower;
         }
     }

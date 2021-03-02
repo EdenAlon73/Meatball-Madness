@@ -10,6 +10,7 @@ TagManager:
   - Fluid
   - Cannon
   - Particle_HyperSpeed
+  - InvisColl
   layers:
   - Default
   - TransparentFX
