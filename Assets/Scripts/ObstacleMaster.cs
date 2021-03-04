@@ -19,7 +19,8 @@ public class ObstacleMaster : MonoBehaviour
     [SerializeField] private bool doIMoveVertically = false;
     [SerializeField] private float verticalDistance = 5f;
     [SerializeField] private float verticalMoveSpeed = 20f;
-
+    
+    [Header("Wait Time To Start Movement")]
     [SerializeField] private float waitTimeToStart;
     
     
