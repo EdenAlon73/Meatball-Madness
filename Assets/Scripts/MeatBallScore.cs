@@ -14,7 +14,7 @@ public class MeatBallScore : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
         anim = GetComponent<Animator>();
     }
-
+    /*
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Movables"))
@@ -24,14 +24,15 @@ public class MeatBallScore : MonoBehaviour
             Instantiate(scoreTxt, scoreSpwanPoint.position, Quaternion.identity ,canvas.transform);
         }
     }
-
+    */
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Collectable"))
         {
             gameManager.AddToScoreMovable();
-            Destroy(other.gameObject);
             Instantiate(scoreTxt, scoreSpwanPoint.position, Quaternion.identity, canvas.transform);
+            Destroy(other.gameObject);
+            
         }
     }
 }
